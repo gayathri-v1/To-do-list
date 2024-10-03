@@ -1,11 +1,27 @@
+import './style.css';
+import {subTask, array,deleteAll} from "./subTask";
+import { Todo  } from './logic';
 
-import {subTask} from "./subTask";
+
+const content= document.querySelector('.content2');
+const addTaskBtn= document.querySelector('.addTask');
+const close= document.createElement('button');
+close.textContent="X";
+close.classList='close';
+addTaskBtn.addEventListener('click',function(){
+    if(content.style.display==='none'){
+        content.style.display="flex";}
+        
+});
+close.addEventListener('click',()=>{
+    content.style.display='none';
+})
+content.appendChild(close);
 // title
 const title =document.createElement('label');
 title.textContent="Title:";
 const inputTitle=document.createElement('input');
 inputTitle.type='text';
-const valueTitle=inputTitle.value;
 title.appendChild(inputTitle);
 
 //description
@@ -15,7 +31,6 @@ const inputDesc= document.createElement('textarea');
 inputDesc.rows=5;
 inputDesc.cols=30;
 inputDesc.placeholder="Give some description"
-const valueDesc= inputDesc.value;
 // desc.appendChild(inputDesc);
 
 //duedate
@@ -23,7 +38,6 @@ const duedate= document.createElement('label');
 duedate.textContent='Due date:';
 const inputDueDate=document.createElement('input');
 inputDueDate.type='date';
-const valueDueDate=inputDueDate.value;
 duedate.appendChild(inputDueDate);
 //priority
 const priority= document.createElement('label');
@@ -49,13 +63,7 @@ inputNotes.rows=5;
 inputNotes.cols=30;
 inputNotes.placeholder="Write Notes"
 // inputNotes.type='text';
-const valueNotes= inputNotes.value;
 notes.appendChild(inputNotes);
-
-//checklist
-
-subTask();
-
 
 //submit button
 const btn= document.createElement('div');
@@ -64,12 +72,32 @@ const submit= document.createElement('button');
 submit.textContent="Confirm";
 btn.appendChild(submit);
 //add eventlistener
+submit.addEventListener('click',()=>{
+    const valueTitle=inputTitle.value;
+    const valueDesc= inputDesc.value;
+    const valueDueDate=inputDueDate.value;
+    const valuePriority=selectList.value;
+    const valueNotes= inputNotes.value;
+    
+    const obj= new Todo(valueTitle,valueDesc,valueDueDate,valuePriority,valueNotes,array);
+    console.log(obj);
+    clear();
+    deleteAll();
+})
 const cancel= document.createElement('button');
 cancel.textContent="Cancel";
 btn.appendChild(cancel)
 //add eventlistener
+cancel.addEventListener('click',clear)
+function clear(){
+    inputTitle.value="";
+    inputDesc.value="";
+    inputDueDate.value="";
+    inputNotes.value="";
+    deleteAll();
+    
+}
 
-const content= document.querySelector('.content2');
 content.appendChild(title);
 content.appendChild(desc);
 content.appendChild(inputDesc);
@@ -77,8 +105,9 @@ content.appendChild(duedate);
 content.appendChild(priority);
 content.appendChild(notes);
 content.appendChild(inputNotes)
-// content.appendChild(checkList);
+content.appendChild(subTask());
 content.appendChild(btn);
-// content.appendChild(cancel);
+
+
 
 

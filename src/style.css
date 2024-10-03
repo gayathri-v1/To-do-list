@@ -17,8 +17,8 @@ button{
 
 .content2{
     background-color: antiquewhite;
-    height:500px;
-    width:400px;
+    
+    width:fit-content;
     display: flex;
     flex-direction: column;
     border-radius: 10px;
@@ -45,4 +45,14 @@ label{
 button:hover{
     background-color: rgb(198, 117, 148);
     color: silver;
+}
+.close{
+    
+    border-radius: 50%;
+    color: black;
+    background-color: brown;
+    font-weight: 800;
+    font-size: medium;
+    width:40px;
+    margin:0;
 }
