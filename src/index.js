@@ -1,22 +1,20 @@
 import './style.css';
 import {subTask, array,deleteAll} from "./subTask";
 import { Todo  } from './logic';
+import { addProj,content1,addProject } from '../content1';
 
+addProj();
+// addProject.addEventListener('click',addProj);
 
 const content= document.querySelector('.content2');
 const addTaskBtn= document.querySelector('.addTask');
-const close= document.createElement('button');
-close.textContent="X";
-close.classList='close';
+
 addTaskBtn.addEventListener('click',function(){
     if(content.style.display==='none'){
         content.style.display="flex";}
         
 });
-close.addEventListener('click',()=>{
-    content.style.display='none';
-})
-content.appendChild(close);
+// content.appendChild(close);
 // title
 const title =document.createElement('label');
 title.textContent="Title:";

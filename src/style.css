@@ -3,8 +3,20 @@
     padding:0;
     box-sizing: border-box;
 }
+header {
+    font-family: "Yatra One", system-ui;
+    font-weight: 800;
+    font-style: normal;
+    background-color: lavender;
+    text-align: center;
+    padding:20px;
+    font-size: xx-large;
+
+  }
+  
 body{
     font-family: "Nunito Sans", sans-serif;
+    background-color: rgb(205, 205, 249);
 }
 button{
     color: silver;
@@ -14,7 +26,17 @@ button{
     border-radius: 10px;
     margin: 10px;
 }
-
+.container{
+    display: flex;
+    flex-direction: row;
+}
+.content1{
+    min-height: 100vh;
+    width: 300px;
+    background-color: rgb(171, 171, 248);
+    border: 1px rgb(116, 68, 84) solid;
+    box-shadow: 5px 10px rgb(116, 63, 81);
+}
 .content2{
     background-color: antiquewhite;
     
@@ -45,14 +67,4 @@ label{
 button:hover{
     background-color: rgb(198, 117, 148);
     color: silver;
-}
-.close{
-    
-    border-radius: 50%;
-    color: black;
-    background-color: brown;
-    font-weight: 800;
-    font-size: medium;
-    width:40px;
-    margin:0;
 }
