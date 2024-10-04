@@ -1,111 +1,90 @@
 import './style.css';
-import {subTask, array,deleteAll} from "./subTask";
 import { Todo  } from './logic';
-import { addProj,content1,addProject } from '../content1';
+import { addProj} from './content1';
+export{content2,addTask};
+
 
 addProj();
-// addProject.addEventListener('click',addProj);
+const content2= document.querySelector('.content2');
 
-const content= document.querySelector('.content2');
-const addTaskBtn= document.querySelector('.addTask');
+ function addTask(){
 
-addTaskBtn.addEventListener('click',function(){
-    if(content.style.display==='none'){
-        content.style.display="flex";}
-        
-});
-// content.appendChild(close);
-// title
-const title =document.createElement('label');
-title.textContent="Title:";
-const inputTitle=document.createElement('input');
-inputTitle.type='text';
-title.appendChild(inputTitle);
+//create the form here using innerHTML
 
-//description
-const desc= document.createElement('label');
-desc.textContent='Description:';
-const inputDesc= document.createElement('textarea');
-inputDesc.rows=5;
-inputDesc.cols=30;
-inputDesc.placeholder="Give some description"
-// desc.appendChild(inputDesc);
+content2.innerHTML=`
+    <label for="title">Title</label>
+    <input type="text" id="titleInput">
+    
+    <label for="Desc">Description</label>
+    <textarea id="desc" rows="4" cols="50" placeholder="Give some description"></textarea>
 
-//duedate
-const duedate= document.createElement('label');
-duedate.textContent='Due date:';
-const inputDueDate=document.createElement('input');
-inputDueDate.type='date';
-duedate.appendChild(inputDueDate);
-//priority
-const priority= document.createElement('label');
-priority.textContent='Priority:'
-    const priorityValArr= ['Low','Medium','High'];
-    const selectList = document.createElement("select");
-    priority.appendChild(selectList);
-    for (let i = 0; i < priorityValArr.length; i++) {
-        const option = document.createElement("option");
-        option.value = priorityValArr[i];
-        option.text = priorityValArr[i];
-        selectList.appendChild(option);
-    }
+    <label for="duedate">Duedate:</label>
+    <input type="date" id="duedate">
 
+    <label for="priority">Priority:</label>
+    <select id="priority">
+    <option value="high">High</option>
+    <option value="medium">Medium</option>
+    <option value="low">Low</option>
+    </select>
 
+    <label for="subTask">Sub tasks: </label>
+    <div><input type="text" id="subtask">
+    <button id="check"><span class="material-symbols-outlined">check</span></button><div>
+    <div class="listDiv"></div>
 
+    <div class="btn">
+    <button class="submit">Submit</button>
+    <button class="cancel">Cancel</button></div>    
+`;
+//add eventlisteners for three buttons check, cancel and submit
+//check button
+    const array= [];
+    const listDiv= document.querySelector('.listDiv');
+    const ul=document.createElement('ul');
+    listDiv.appendChild(ul);
 
-//notes
-const notes= document.createElement('label');
-notes.textContent='Notes:';
-const inputNotes= document.createElement('textarea');
-inputNotes.rows=5;
-inputNotes.cols=30;
-inputNotes.placeholder="Write Notes"
-// inputNotes.type='text';
-notes.appendChild(inputNotes);
+    content2.querySelector('#check').addEventListener('click',()=>{
+            const listItem= document.createElement('li')
+            listItem.textContent=content2.querySelector('#subtask').value;
+            array.push(content2.querySelector('#subtask').value);
+            content2.querySelector('#subtask').value="";
+            ul.appendChild(listItem);
+            
+        })
 
 //submit button
-const btn= document.createElement('div');
-btn.className='btn';
-const submit= document.createElement('button');
-submit.textContent="Confirm";
-btn.appendChild(submit);
-//add eventlistener
-submit.addEventListener('click',()=>{
-    const valueTitle=inputTitle.value;
-    const valueDesc= inputDesc.value;
-    const valueDueDate=inputDueDate.value;
-    const valuePriority=selectList.value;
-    const valueNotes= inputNotes.value;
-    
-    const obj= new Todo(valueTitle,valueDesc,valueDueDate,valuePriority,valueNotes,array);
-    console.log(obj);
-    clear();
-    deleteAll();
-})
-const cancel= document.createElement('button');
-cancel.textContent="Cancel";
-btn.appendChild(cancel)
-//add eventlistener
-cancel.addEventListener('click',clear)
-function clear(){
-    inputTitle.value="";
-    inputDesc.value="";
-    inputDueDate.value="";
-    inputNotes.value="";
-    deleteAll();
-    
-}
+        content2.querySelector('.submit').addEventListener('click',()=>{
+            const valueTitle=document.querySelector('#titleInput').value;
+            const valueDesc= document.querySelector('#desc').value;
+            const valueDueDate=document.querySelector('#duedate').value;
+            const valuePriority=document.querySelector('#priority').value;
+            
+            
+            const obj= new Todo(valueTitle,valueDesc,valueDueDate,valuePriority,array);
+            console.log(obj);
+            clear();
+        })
+//cancel button
+        content2.querySelector('.cancel').addEventListener('click',()=>{
+            // clear();
+            content2.style.display='none';
 
-content.appendChild(title);
-content.appendChild(desc);
-content.appendChild(inputDesc);
-content.appendChild(duedate);
-content.appendChild(priority);
-content.appendChild(notes);
-content.appendChild(inputNotes)
-content.appendChild(subTask());
-content.appendChild(btn);
+        });
 
+        function clear(){
+            document.querySelector('#titleInput').value="";
+            document.querySelector('#desc').value="";
+            document.querySelector('#duedate').value="";
+            deleteAll();
+        }
 
+        function deleteAll(){
+            // const ul=content2.querySelector('ul');
+            listDiv.removeChild(ul);
 
+        }
+
+return content2;
+    }
 
