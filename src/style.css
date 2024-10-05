@@ -69,8 +69,11 @@ button:hover{
     color: silver;
 }
 .content3{
+    width:1000px;
+    height: 100vh;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
 }
 .content3 button{
     background-color: transparent;

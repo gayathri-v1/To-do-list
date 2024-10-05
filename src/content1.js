@@ -1,11 +1,11 @@
-// import{content2,addTaskBtn} from "../todo list/src/index"
+import {content2} from './content2';
+
 export{content1,addProject,addProj}
  const content1= document.querySelector('.content1');
  const addProject= document.querySelector('.addProject');
  function addProj(){
      const content3= document.querySelector('.content3');
      
-
 //add title for the project with indput text
 addProject.addEventListener('click',()=>{
     const inputDiv = document.querySelector('#inputDiv');
@@ -45,7 +45,17 @@ listdiv.querySelector('.projBtn').addEventListener('click',()=>{
 
             `;
             content3.querySelector('h2').textContent=listdiv.querySelector('.projBtn').id;
+            const addTaskBtn= content3.querySelector('#addTaskBtn');
+            content2.style.display='none';
+            addTaskBtn.addEventListener('click',()=>{
             
+                if(content2.style.display==='none'){
+                    content2.style.display="flex";}
+                    else{
+                        content2.style.display='none';
+                    }
+                
+            });
         })
        
         div.style.display = 'none';
