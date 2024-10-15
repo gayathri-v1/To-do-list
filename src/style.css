@@ -72,10 +72,34 @@ button:hover{
     width:1000px;
     height: 100vh;
     display: flex;
+    flex-direction: column;
+    padding:10px;
+    /* justify-content: space-between; */
+}
+.headerDiv{
+    padding:10px;
+    display: flex;
     flex-direction: row;
     justify-content: space-between;
+    border:1px solid black;
 }
-.content3 button{
+#addTaskBtn{
+    color: #250c0c;
+}
+.contentDiv table,.contentDiv th,.contentDiv td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding:10px;
+    
+}
+.contentDiv td{
+    gap:10px;
+}
+.contentDiv table{
+    width:100%;
+    margin:10px;
+}
+.headerDiv button{
     background-color: transparent;
     height: 50px;
     width:50px;

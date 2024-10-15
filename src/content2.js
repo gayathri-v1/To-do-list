@@ -1,11 +1,14 @@
-export {content2};
-import { Todo  } from './logic';
+export {content2,taskArray};
+import { Project, Todo  } from './logic';
+import { renderTask } from './content3';
 const content2= document.createElement('div');
 content2.className='content2';
 const container= document.querySelector('.container');
 container.appendChild(content2);
 
 //create the form here using innerHTML
+const taskArray=[];
+const projArray=[];
 
 content2.innerHTML=`
     <label for="title">Title</label>
@@ -31,22 +34,26 @@ content2.innerHTML=`
 
     <div class="btn">
     <button class="submit">Submit</button>
-    <button class="cancel">Cancel</button></div>    
+    <button class="close">Close</button></div>    
 `;
-//add eventlisteners for three buttons check, cancel and submit
+//add eventlisteners for three buttons check, close and submit
 //check button
-    const array= [];
+    let subtasksArray = [];
     const listDiv= document.querySelector('.listDiv');
     const ul=document.createElement('ul');
     listDiv.appendChild(ul);
 
+
     content2.querySelector('#check').addEventListener('click',()=>{
+        let subtaskValue=content2.querySelector('#subtask').value;
+        if (subtaskValue.trim()) {
             const listItem= document.createElement('li')
-            listItem.textContent=content2.querySelector('#subtask').value;
-            array.push(content2.querySelector('#subtask').value);
+            listItem.textContent=subtaskValue;//display in DOM
+            subtasksArray.push(subtaskValue);//assigning data to array
             content2.querySelector('#subtask').value="";
             ul.appendChild(listItem);
-            
+           
+        }
         })
 
 //submit button
@@ -57,28 +64,37 @@ content2.innerHTML=`
             const valuePriority=document.querySelector('#priority').value;
             
             
-            const obj= new Todo(valueTitle,valueDesc,valueDueDate,valuePriority,array);
-            console.log(obj);
+            const obj= new Todo(valueTitle,valueDesc,valueDueDate,valuePriority,subtasksArray);
+            // Project.addTodo(obj);
+            taskArray.push(obj);
+            projArray.push(taskArray);
+            console.log(taskArray);
             clear();
+            closeContent();
+            renderTask(taskArray);
         })
 //cancel button
-        content2.querySelector('.cancel').addEventListener('click',()=>{
-            // clear();
-            content2.style.display='none';
+        content2.querySelector('.close').addEventListener('click',()=>{
+           closeContent();
 
         });
+        function closeContent(){
+            clear();
+            subtasksArray = [];
+            content2.style.display='none';
+        }
 
         function clear(){
             document.querySelector('#titleInput').value="";
             document.querySelector('#desc').value="";
             document.querySelector('#duedate').value="";
-            deleteAll();
+            subtasksArray = []; 
+            clearSubTasks();
         }
 
-        function deleteAll(){
-            // const ul=content2.querySelector('ul');
-            listDiv.removeChild(ul);
-
+        function clearSubTasks(){
+            ul.innerHTML = "";//Clear all list items inside ul 
         }
+        
 content2.style.display='none';
 
