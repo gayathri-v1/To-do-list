@@ -8,27 +8,15 @@ export class Todo{
         this.subTaskArray=subTaskArray;
     }
 }
-export class Project{
-    constructor(titleProj){
-        this.titleProj=titleProj;
-        this.todos = []; // Array to hold todo objects
-    }
-
-    // Method to add a todo to the project
-    addTodo(todo) {
-        this.todos.push(todo);
-    }
-
-    // Method to remove a todo (based on the todo's title for example)
-    removeTodo(todoTitle) {
-        this.todos = this.todos.filter(todo => todo.title !== todoTitle);
-    }
-
-    // Method to get all todos
-    getTodos() {
-        return this.todos;
-    }
-}
+export function addProject(title, tasks) {
+    const newProject = {
+      title: title,
+      taskArray: tasks
+    };
+    projArray.push(newProject);
+    console.log(projArray);  // Add the new project to projArray
+    renderProjects();  // Re-render the list to show the new project
+  }
 
 
 

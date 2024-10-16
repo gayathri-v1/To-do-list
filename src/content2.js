@@ -12,9 +12,9 @@ const projArray=[];
 
 content2.innerHTML=`
     <label for="title">Title</label>
-    <input type="text" id="titleInput">
+    <input type="text" id="title">
     
-    <label for="Desc">Description</label>
+    <label for="desc">Description</label>
     <textarea id="desc" rows="4" cols="50" placeholder="Give some description"></textarea>
 
     <label for="duedate">Duedate:</label>
@@ -28,7 +28,7 @@ content2.innerHTML=`
     </select>
 
     <label for="subTask">Sub tasks: </label>
-    <div><input type="text" id="subtask">
+    <div><input type="text" id="subTask">
     <button id="check"><span class="material-symbols-outlined">check</span></button><div>
     <div class="listDiv"></div>
 

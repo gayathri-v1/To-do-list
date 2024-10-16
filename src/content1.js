@@ -36,6 +36,7 @@ addProject.addEventListener('click',()=>{
 
         listdiv.querySelector('.projBtn').textContent=value;
         listdiv.querySelector('.projBtn').id=value;
+        projArray.push(value);
         // projArray.push(listdiv.querySelector('.projBtn').id);
         // const projObj=new Project(value);
         //console.log(projObj);
@@ -44,6 +45,7 @@ addProject.addEventListener('click',()=>{
 //handle the delete button
         listdiv.querySelector('#delete').addEventListener('click',()=>{
         content1.removeChild(listdiv);
+        
     })
 //handle the project button
 listdiv.querySelector('.projBtn').addEventListener('click',()=>{

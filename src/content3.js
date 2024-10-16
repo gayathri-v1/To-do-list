@@ -23,7 +23,7 @@ export function renderTask(taskArray){
                 checkbox.name = subtask;
                 // Label for the checkbox
                 const label = document.createElement('label');
-                label.htmlFor = subtask;
+                // label.htmlFor = subtask;
                 label.textContent = subtask;
 
                 // Append checkbox and label to the div
@@ -39,7 +39,7 @@ export function renderTask(taskArray){
         }
     
     
-
+//action button
       const actionTd = document.createElement('td');
       const doneButton = document.createElement('button');
       doneButton.textContent = 'Done';
@@ -56,6 +56,25 @@ export function renderTask(taskArray){
     
 };
     
-    
+    // Function to render projects and tasks
+function renderProjects() {
+    const projectList = document.getElementById('project-list');
+    projectList.innerHTML = '';  // Clear previous list
+    projArray.forEach((project, index) => {
+      const projectItem = document.createElement('div');
+      projectItem.innerHTML = `
+        <h3>${project.title}</h3>
+        <ul>
+          ${project.taskArray.map(task => `<li>${task}</li>`).join('')}
+        </ul>
+        <button onclick="deleteProject(${index})">Delete</button>
+      `;
+      projectList.appendChild(projectItem);
+    });
+  }
+  
+  // Initial rendering of projects
+  renderProjects();
+  
     
     
