@@ -16,8 +16,10 @@ body{
 
 }
 .createProject{
+    
     display: flex;
     flex-direction: row;
+    
 }
 .taskDiv{
     width:80%;
@@ -46,6 +48,9 @@ span{
     padding:10px;
 }
 
+.projectBtn:hover{
+    background-color: #b481f8;
+}
 button:active{
     border-bottom:solid 3px black;
 }

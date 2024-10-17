@@ -1,39 +1,64 @@
-const addProject= document.querySelector('.addProject');
-const projectDiv= document.querySelector('.projectDiv');
+import {Project} from './index';
+import "./styles.css";
+const addProject = document.querySelector(".addProject");
+const projectDiv = document.querySelector(".projectDiv");
+const inputProject = document.querySelector(".createProject");
+// 
+toggleContainer(inputProject);//none
 
-addProject.addEventListener('click',()=>{
-     createProject();
-
+addProject.addEventListener("click", () => {
+    toggleContainer(inputProject);//flex
 });
 
-function createProject(){
-    const div= document.createElement('div');
+  const check = document.querySelector(".check");
+  let id=1;  
+  check.addEventListener("click", () => {
+    const titleValue = document.querySelector("#project").value;
+    if(titleValue.trim()){
+    renderProject(titleValue,id);
+    const project1 = new Project(id,titleValue);
+    console.log(project1);
 
-    div.innerHTML=`
-    <div class="createProject">
-    <input type="text" id="project" placeholder="Enter project title"></input>
-    <button class="check"><span class="material-symbols-outlined">
-    check
-    </span><button>
-    </div>
-    `;
-        const check=div.querySelector('.check');
-        const titleValue= div.querySelector('#project').value;
+}
+id++;
 
-            check.addEventListener('click',()=>{
-                renderProject(titleValue);
-                console.log(titleValue);
-            })
+    toggleContainer(inputProject);//none
+    document.querySelector("#project").value = "";
+  });
+
+function renderProject(value,id) {
     
-    projectDiv.appendChild(div);
+  const div = document.createElement("div");
+  const button = document.createElement("button");
+    div.className='projectBtn';
+  const projectName = document.createElement("p");
+  projectName.textContent = value;
+  const delBtn = document.createElement("button");
+  const icon= document.createElement('span');
+  icon.className="material-symbols-outlined"
+  icon.textContent='delete_forever';
   
-};
-function renderProject(value){
-    const div= document.createElement('div');
-    const projectName= document.createElement('p');
-    projectName.textContent=value;
-    div.appendChild(projectName);
+delBtn.addEventListener('click',()=>{
+    deleteProject(id);
+    console.log(id);
+})
 
-    projectDiv.appendChild(div);
-};
+  delBtn.appendChild(icon);
+  button.appendChild(delBtn);
+  button.appendChild(projectName);
+ 
+  div.appendChild(button);
+  projectDiv.appendChild(div);
+}
 
+function toggleContainer(div) {
+  if (div.style.display === 'none') {
+    div.style.display = 'flex';
+  } else {
+    div.style.display = 'none';
+  }
+}
+
+function deleteProject(id){
+    Project.removeProject(id);
+}
