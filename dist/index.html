@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To do list</title>
-    <!-- <link rel="stylesheet" href="./style.css"> -->
-    <!-- <script defer src="./index.js" type="module"></script> -->
+    <!-- <link rel="stylesheet" href="./styles.css"> -->
+    <!-- <script defer src="./project.js" ></script> -->
     <!-- <script defer src="./subTask.js"></script> -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,15 +16,36 @@
 <link href="https://fonts.googleapis.com/css2?family=Yatra+One&display=swap" rel="stylesheet">
 <script defer src="main.js"></script></head>
 <body>
-    <header>DoerZone</header>
     <div class="container">
-    <div class="content1">
+    <div class="projectDiv">
         <h3>My Projects</h3>
-        <button class="addProject">Add project</button>
+        <button class="addProject"><span class="material-symbols-outlined">
+            add
+            </span><p>Add project</p></button>
+
+            <div class="createProject">
+                <input type="text" id="project" placeholder="Enter project title">
+                <button class="check"><span class="material-symbols-outlined">
+                check
+                </span><button>
+                </div>
         
     </div>
-    
-    <div class="content3"></div>
+    <div class="taskDiv">
+        <div class="renderTask"></div>
+        <div class="addTask">
+            <button><span class="material-symbols-outlined">
+                add
+                </span><p>Add Task</p>
+            </button>
+
+        </div>
+        
+
+        </div>
+        <div class="stepDiv">
+    </div>
+  
     </div>
 </div>
 </body>
