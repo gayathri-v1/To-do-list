@@ -30,7 +30,6 @@ submitBtn.addEventListener('click',()=>{
     if(inputTitle.trim()){
     renderDiv(inputTitle,inputDate,inputNote,inputPriority,getSteps());}
     clearEntries();
-    clearSteps();
    
 })
 
@@ -54,6 +53,7 @@ function renderDiv(inputTitle,inputDate,inputNote,inputPriority,steparray){
         <p class="priority"></p>
         <p class="note"></p>
         <button class="steps">See Steps</button>
+        <div class="renderStep"></div>
         </div>
 
     `;
@@ -63,6 +63,7 @@ function renderDiv(inputTitle,inputDate,inputNote,inputPriority,steparray){
     div.querySelector('.priority').textContent="Priority: "+inputPriority;
     div.querySelector('.steps').addEventListener('click',()=>{
         renderSteps(steparray);
+        toggleContainer(renderSteps);
     })
 };
 const stepArray=[];
@@ -90,25 +91,20 @@ function renderSteps(stepArray){
            div.querySelector('.stepValue').textContent=stepValue; 
        
     });
+    document.querySelector('.renderStep').appendChild(div);
+    
 }
-function clearSteps(stepDiv,subtask){
-    stepDiv.removeChild(subtask);
+function clearSteps(){
+    document.querySelector('.stepDiv').innerHTML='';
 
 }
-
-
-
-
-
-
-
-
 
 function clearEntries(){
 document.querySelector('#title').value='';
     document.querySelector('#duedate').value='';
     document.querySelector('#notes').value='';
     document.querySelector('#priorityOptions').value='';
+    clearSteps();
 
     toggleContainer(taskDiv);
 
