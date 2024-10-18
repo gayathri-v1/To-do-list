@@ -22,11 +22,12 @@ export class Project {
         }
     }
     static removeProject(projectId){
-        const index= this.allProjects.findIndex(project=>project.id === projectId)
+        const index= Project.allProjects.findIndex(project=>project.id === projectId)
         if(index !== -1){
-            this.allProjects.splice(index, 1);
+            Project.allProjects.splice(index, 1);
             
         }
+        console.log(typeof Project);
     }
 }
 
@@ -82,21 +83,25 @@ class Step {
 }
 
 // Example usage
-// const project1 = new Project("Project 1", "Description 1");
+// const project1 = new Project(1,"Project 1");
 // const task1 = new Task(1, "Task 1", "Description 1", "2024-01-01","p4");
 // const step1 = new Step(1, "Step 1", "Description 1");
 // const step12 = new Step(2, "Step 2", "Description 2");
 // const step13 = new Step(3, "Step 3", "Description 3");
 
-
+// const task12 = new Task(2, "Task 2", "Description 2", "2024-01-01","p4");
+// const step21 = new Step(1, "Step 1", "Description 1");
+// const step22 = new Step(2, "Step 2", "Description 2");
 
 // project1.addTask(task1);
+// project1.addTask(task12);
+
 // task1.addStep(step1);
 // task1.addStep(step12);
 // task1.addStep(step13);
+// task12.addStep(step21);
+// task12.addStep(step22);
 
-
-// console.log(project1);
 
 // const project2  = new Project("Project 2", "Description 2","p2");
 // const task2 = new Task(2, "Task 2", "Description 2", "2024-01-01");
@@ -108,5 +113,6 @@ class Step {
 // console.log(project2);
 
 
+// Project.removeProject(1);
 
 // console.log(Project.allProjects);

@@ -6,7 +6,7 @@
     <title>To do list</title>
     <!-- <link rel="stylesheet" href="./styles.css"> -->
     <!-- <script defer src="./project.js" ></script> -->
-    <!-- <script defer src="./subTask.js"></script> -->
+    <!-- <script defer src="./task.js"></script> -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
@@ -38,7 +38,42 @@
                 add
                 </span><p>Add Task</p>
             </button>
-
+            </div>
+            <div class="task">
+                <div class="one"><input type="text" id="title" placeholder="Buy groceries...">
+            
+                <span class="material-symbols-outlined">
+                    calendar_add_on
+                    </span>
+                    <input type="date" id="duedate"> </div>
+                    <div class="two">
+                    <textarea id="notes" placeholder="Add note"></textarea>
+                    <label for="priorityOptions" id="priority">Priority</label>
+                    <select name="priority" id="priorityOptions">
+                    <option value="P1">None</option>
+                    <option value="P1">P1</option>
+                    <option value="P2">P2</option>
+                    <option value="P3">P3</option>
+                    <option value="P4">P4</option></select>
+                    <button class="addStep"><span class="material-symbols-outlined">
+                        add
+                        </span><p>Add Step</p></button>
+                        <div class="step">
+                            <input type="text" id="step" placeholder="sub task">
+                            <button class="stepCheck"><span class="material-symbols-outlined">
+                            check
+                            </span><button>  
+                        </div>
+                        <div class="stepDiv"></div>   
+                    </div>
+                <div class="actionBtn">
+                    <button class="close"><span class="material-symbols-outlined">
+                        close
+                        </span></button>
+                    <button class="submit"><span class="material-symbols-outlined">
+                check
+                </span></button>
+                </div>
         </div>
         
 

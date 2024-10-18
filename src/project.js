@@ -40,7 +40,9 @@ function renderProject(value,id) {
   
 delBtn.addEventListener('click',()=>{
     deleteProject(id);
-    console.log(id);
+    // console.log(id);
+  projectDiv.removeChild(div);
+
 })
 
   delBtn.appendChild(icon);
@@ -60,5 +62,7 @@ function toggleContainer(div) {
 }
 
 function deleteProject(id){
-    Project.removeProject(id);
+  Project.removeProject(id);
+console.log(Project.allProjects);
+
 }

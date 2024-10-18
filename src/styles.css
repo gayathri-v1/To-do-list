@@ -37,12 +37,10 @@ height:10%;
 
 button{
     background-color: transparent;
-    /* padding:10px; */
     border: none;
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    /* border-radius: 10px; */
+    justify-content: center;  
 }
 span{
     padding:10px;
@@ -53,4 +51,57 @@ span{
 }
 button:active{
     border-bottom:solid 3px black;
+}
+.task{
+    background-color: #ece3f8;
+    width:400px;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+}
+.one,.step{
+    display: flex;
+    flex-direction: row;
+}
+.two{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    
+}
+.actionBtn{
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+}
+.submit{
+    background-color: green;
+}
+.close{
+    background-color: red;
+}
+.task input, .task select{
+    padding:10px;
+}
+textarea{
+    resize: vertical;
+}
+.renderDiv{
+    background-color: #ece3f8;
+}
+.taskHeader{
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    justify-content: space-evenly;
+    font-size: x-large;
+}
+.note{
+    border:1px solid black;
+    font-size: large;
+}
+.priority{
+    font-size: large;
 }
