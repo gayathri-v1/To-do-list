@@ -1,5 +1,6 @@
 import {Project} from './index';
 import "./styles.css";
+// export {toggleContainer};
 const addProject = document.querySelector(".addProject");
 const projectDiv = document.querySelector(".projectDiv");
 const inputProject = document.querySelector(".createProject");
