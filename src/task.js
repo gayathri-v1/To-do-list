@@ -1,14 +1,16 @@
-// import { toggleContainer } from "./project.js";
-// import "./styles.css";
-// import {Project} from './index';
-
-const taskDiv = document.querySelector(".task");
-const addTaskBtn = document.querySelector(".addTask");
-toggleContainer(taskDiv);
-addTaskBtn.addEventListener("click", () => {
+import {Task,Step} from './index';
+export function task(){
+  const taskDiv = document.querySelector(".task");
+  const addTaskBtn = document.querySelector(".addTask");
+  
+  toggleContainer(taskDiv); //none
+  addTaskBtn.addEventListener("click", () => {
     
-  toggleContainer(taskDiv);
+  toggleContainer(taskDiv); //flex
 });
+
+
+
 
 const addStep = document.querySelector(".addStep");
 const step = document.querySelector(".step");
@@ -31,9 +33,9 @@ submitBtn.addEventListener("click", () => {
   const stepAr = getSteps();//collect the steps
   if (inputTitle.trim()) {
     renderDiv(inputTitle, inputDate, inputNote, inputPriority, stepAr);
-    // const task1=new Task(checkId, inputTitle, inputNote, inputDate,inputPriority);
-    // project1.addTask(task1);
-
+    const task1=new Task(checkId, inputTitle, inputNote, inputDate,inputPriority);
+    project1.addTask(task1);
+    
   }
   clearEntries();
   stepArray.length = 0; // Reset stepArray
@@ -94,21 +96,23 @@ function renderDiv(inputTitle, inputDate, inputNote, inputPriority, stepAr) {
         const subCheck = subTaskDiv.querySelector(".subCheck");
         const subTaskText=subTaskDiv.querySelector(".stepValue");
         subTaskText.textContent = stepValue;
-        // const step1 = new Step(uniqueId, stepValue);
-        // Task.addStep(step1);
-        //add eventlistener to subcheck
+        const step1 = new Step(uniqueId, stepValue);
+        Task.addStep(step1);
+        // add eventlistener to subcheck
         subCheck.addEventListener("click", () => {
           if (subCheck.checked) {
             subTaskText.style.textDecorationLine = 'line-through';
+            step1.markAsCompleted();
           } else {
             subTaskText.style.textDecorationLine = 'none';
+            step1.markAsIncomplete();
           }
         });
 
         //add eventlistener to subdelete
         subTaskDiv.querySelector('.subDelete').addEventListener('click',()=>{
           div.querySelector(".renderDynamicSubTask").removeChild(subTaskDiv);
-
+          task1.removeStep(uniqueId);
         })
 
         div.querySelector(".renderDynamicSubTask").appendChild(subTaskDiv);
@@ -176,4 +180,5 @@ function toggleContainer(div) {
 }
 function hide(div) {
   div.style.display = "none";
+}
 }

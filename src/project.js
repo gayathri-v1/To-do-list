@@ -1,6 +1,8 @@
 import {Project} from './index';
+import {task} from './task';
 import "./styles.css";
 // export {toggleContainer};
+task();
 const addProject = document.querySelector(".addProject");
 const projectDiv = document.querySelector(".projectDiv");
 const inputProject = document.querySelector(".createProject");
@@ -39,9 +41,14 @@ function renderProject(value,id) {
   icon.className="material-symbols-outlined"
   icon.textContent='delete_forever';
   
+  
+button.addEventListener('click',()=>{
+  document.querySelector('.projectHeading').textContent=value;
+  
+})
+
 delBtn.addEventListener('click',()=>{
     deleteProject(id);
-    // console.log(id);
   projectDiv.removeChild(div);
 
 })
