@@ -22,7 +22,7 @@ addStep.addEventListener("click", () => {
 
 const submitBtn = document.querySelector(".submit");
 const closeBtn = document.querySelector(".close");
-
+//submit eventlistener
 submitBtn.addEventListener("click", () => {
   const inputTitle = document.querySelector("#title").value;
   const inputDate = document.querySelector("#duedate").value;
@@ -31,11 +31,14 @@ submitBtn.addEventListener("click", () => {
   const stepAr = getSteps();//collect the steps
   if (inputTitle.trim()) {
     renderDiv(inputTitle, inputDate, inputNote, inputPriority, stepAr);
+    // const task1=new Task(checkId, inputTitle, inputNote, inputDate,inputPriority);
+    // project1.addTask(task1);
+
   }
   clearEntries();
   stepArray.length = 0; // Reset stepArray
 });
-
+//close eventlistener
 closeBtn.addEventListener("click", () => {
   clearEntries();
   hide(step);
@@ -84,11 +87,15 @@ function renderDiv(inputTitle, inputDate, inputNote, inputPriority, stepAr) {
     subTaskDiv.innerHTML = `
             <input type="checkbox" id="checkbox-${uniqueId}" class="subCheck">
             <p class="stepValue"></p>
+            <button class="subDelete"><span class="material-symbols-outlined">
+            delete
+            </span></button>
         `;
         const subCheck = subTaskDiv.querySelector(".subCheck");
         const subTaskText=subTaskDiv.querySelector(".stepValue");
         subTaskText.textContent = stepValue;
-
+        // const step1 = new Step(uniqueId, stepValue);
+        // Task.addStep(step1);
         //add eventlistener to subcheck
         subCheck.addEventListener("click", () => {
           if (subCheck.checked) {
@@ -97,6 +104,12 @@ function renderDiv(inputTitle, inputDate, inputNote, inputPriority, stepAr) {
             subTaskText.style.textDecorationLine = 'none';
           }
         });
+
+        //add eventlistener to subdelete
+        subTaskDiv.querySelector('.subDelete').addEventListener('click',()=>{
+          div.querySelector(".renderDynamicSubTask").removeChild(subTaskDiv);
+
+        })
 
         div.querySelector(".renderDynamicSubTask").appendChild(subTaskDiv);
 
@@ -115,7 +128,7 @@ function renderDiv(inputTitle, inputDate, inputNote, inputPriority, stepAr) {
   div.querySelector(".delete").addEventListener("click", () => {
     renderTask.removeChild(div);
   });
-
+return checkId;
 }
 const stepArray=[];
 function getSteps() {
